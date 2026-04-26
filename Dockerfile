@@ -1,8 +1,10 @@
-# Use the base image
-FROM modenaf360/gotty:latest
- 
-# Expose the desired port
+FROM ubuntu:22.04
+
+RUN apt-get update && apt-get install -y wget \
+ && wget https://github.com/yudai/gotty/releases/download/v1.0.1/gotty_linux_amd64.tar.gz \
+ && tar -xvzf gotty_linux_amd64.tar.gz \
+ && mv gotty /usr/local/bin/
+
 EXPOSE 8080
- 
-# Start Gotty with the specified command
-CMD ["gotty", "-r", "-w", "--port", "8080", "/bin/bash"]
+
+CMD ["sh", "-c", "gotty -r -w --port $PORT /bin/bash"]
