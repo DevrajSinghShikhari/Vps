@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+eyhsFROM ubuntu:22.04
 
 RUN apt-get update && apt-get install -y wget \
  && wget https://github.com/yudai/gotty/releases/download/v1.0.1/gotty_linux_amd64.tar.gz \
